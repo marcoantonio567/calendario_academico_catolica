@@ -23,9 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ou%5g6#i!260dc3q7!36dhzf(gsy4w*sey1sc(q^mlh36_22kz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'calendario-academico-catolica.vercel.app',
+    'localhost',
+    '127.0.0.1',
+]
 
 
 # Application definition
