@@ -68,3 +68,28 @@ class Evento(models.Model):
     def dia_semana(self):
         DIAS_PT = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom']
         return DIAS_PT[self.data_inicio.weekday()]
+
+    @property
+    def proximidade(self):
+        from datetime import date
+        hoje = date.today()
+        delta = (self.data_inicio - hoje).days
+        if delta == 0:
+            return 'Hoje'
+        elif delta == 1:
+            return 'Amanhã'
+        elif delta == -1:
+            return 'Ontem'
+        elif delta > 1:
+            if delta >= 28:
+                meses = max(1, delta // 30)
+                return f'em {meses} {"mês" if meses == 1 else "meses"}'
+            semanas = delta // 7
+            dias = delta % 7
+            if semanas == 0:
+                return f'em {delta} dias'
+            elif dias == 0:
+                return f'em {semanas} semana{"s" if semanas > 1 else ""}'
+            else:
+                return f'em {semanas} semana{"s" if semanas > 1 else ""} e {dias} dia{"s" if dias > 1 else ""}'
+        return None

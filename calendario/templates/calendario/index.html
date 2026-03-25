@@ -134,6 +134,20 @@
 
         .card-icone { font-size: 1rem; flex-shrink: 0; }
 
+        /* PROXIMIDADE */
+        .badge-prox {
+            display: inline-block;
+            font-size: 0.62rem; font-weight: 700;
+            padding: 0.1rem 0.45rem;
+            border-radius: 20px;
+            margin-top: 0.2rem;
+            text-transform: uppercase; letter-spacing: 0.4px;
+        }
+        .badge-hoje   { background: #dcfce7; color: #15803d; }
+        .badge-amanha { background: #fef9c3; color: #a16207; }
+        .badge-ontem  { background: #f3f4f6; color: #6b7280; }
+        .badge-futuro { background: #ede9fe; color: #6d28d9; }
+
         /* VAZIO */
         .vazio { text-align: center; color: #a0aec0; padding: 3rem 1rem; font-size: 0.9rem; }
 
@@ -238,6 +252,17 @@
                     <div class="card-info">
                         <div class="card-titulo">{{ evento.titulo }}</div>
                         <div class="card-categoria">{{ evento.get_categoria_display }}</div>
+                        {% if evento.proximidade %}
+                            {% if evento.proximidade == 'Hoje' %}
+                                <span class="badge-prox badge-hoje">{{ evento.proximidade }}</span>
+                            {% elif evento.proximidade == 'Amanhã' %}
+                                <span class="badge-prox badge-amanha">{{ evento.proximidade }}</span>
+                            {% elif evento.proximidade == 'Ontem' %}
+                                <span class="badge-prox badge-ontem">{{ evento.proximidade }}</span>
+                            {% else %}
+                                <span class="badge-prox badge-futuro">{{ evento.proximidade }}</span>
+                            {% endif %}
+                        {% endif %}
                     </div>
                 </div>
                 {% endfor %}
