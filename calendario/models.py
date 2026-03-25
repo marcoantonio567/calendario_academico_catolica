@@ -63,3 +63,8 @@ class Evento(models.Model):
         if self.e_multiplos_dias:
             return f"{self.data_inicio.strftime('%d/%m')} a {self.data_fim.strftime('%d/%m')}"
         return self.data_inicio.strftime('%d/%m')
+
+    @property
+    def dia_semana(self):
+        DIAS_PT = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom']
+        return DIAS_PT[self.data_inicio.weekday()]
