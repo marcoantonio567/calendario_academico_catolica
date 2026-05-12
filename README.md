@@ -1,67 +1,68 @@
-# Calendário Acadêmico Católica 2026
+````md
+# Católica Academic Calendar 2026
 
-Aplicação web desenvolvida em Django para visualizar o calendário acadêmico da Católica (Palmas - TO) com feriados, recessos, eventos religiosos, institucionais e datas comemorativas do ano de 2026.
+Web application developed with Django to display the academic calendar of Católica (Palmas - TO, Brazil), including holidays, breaks, religious events, institutional events, and commemorative dates for the year 2026.
 
-## Funcionalidades
+## Features
 
-- Listagem de eventos agrupados por mês
-- Filtro por categoria e por mês
-- Categorias com cores e ícones distintos:
-  - Feriado
-  - Recesso
-  - Religioso
-  - Social / Comemorativo
-  - Semana de Mobilização
-  - Evento Institucional
-  - Outro
-- Interface responsiva com filtros fixos no topo (sticky)
-- Comando de gerenciamento para popular o banco de dados
+- Event listing grouped by month
+- Filtering by category and month
+- Categories with distinct colors and icons:
+  - Holiday
+  - Break
+  - Religious
+  - Social / Commemorative
+  - Mobilization Week
+  - Institutional Event
+  - Other
+- Responsive interface with sticky filters at the top
+- Management command to populate the database
 
-## Tecnologias
+## Technologies
 
 - Python 3.12
 - Django 6.0.3
 - SQLite
-- HTML/CSS puro (sem dependências de frontend)
+- Pure HTML/CSS (no frontend dependencies)
 
-## Instalação
+## Installation
 
 ```bash
-# Clone o repositório
-git clone <url-do-repositorio>
+# Clone the repository
+git clone <repository-url>
 cd feriado_catolica
 
-# Crie e ative o ambiente virtual
+# Create and activate the virtual environment
 python -m venv venv
 venv\Scripts\activate   # Windows
 # source venv/bin/activate  # Linux/Mac
 
-# Instale as dependências
+# Install dependencies
 pip install -r requirements.txt
 
-# Aplique as migrações
+# Apply migrations
 python manage.py migrate
 
-# Popule o banco com os eventos de 2026
+# Populate the database with 2026 events
 python manage.py popular_eventos
 
-# Inicie o servidor
+# Start the server
 python manage.py runserver
-```
+````
 
-Acesse em `http://127.0.0.1:8000/`
+Access at `http://127.0.0.1:8000/`
 
-## Estrutura do Projeto
+## Project Structure
 
-```
+```text
 feriado_catolica/
-├── core/                   # Configurações do projeto Django
+├── core/                   # Django project settings
 │   ├── settings.py
 │   ├── urls.py
 │   └── wsgi.py
-├── calendario/             # App principal
-│   ├── models.py           # Model Evento
-│   ├── views.py            # View de listagem com filtros
+├── calendario/             # Main application
+│   ├── models.py           # Event model
+│   ├── views.py            # List view with filters
 │   ├── urls.py
 │   ├── admin.py
 │   ├── templates/
@@ -69,17 +70,17 @@ feriado_catolica/
 │   │       └── index.html
 │   └── management/
 │       └── commands/
-│           └── popular_eventos.py  # Comando para popular o BD
+│           └── popular_eventos.py  # Command to populate the database
 ├── manage.py
 └── requirements.txt
 ```
 
-## Comandos úteis
+## Useful Commands
 
 ```bash
-# Popular o banco de dados com os eventos de 2026
+# Populate the database with 2026 events
 python manage.py popular_eventos
 
-# Acessar o admin do Django
+# Access the Django admin panel
 python manage.py createsuperuser
 ```
